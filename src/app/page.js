@@ -6,8 +6,8 @@ const fetchUser= async ()=>{
   return resp;
 }
 export default async function Home() {
-  // const users= await fetchUser()
-  // console.log(users);
+  const users= await fetchUser()
+  console.log(users);
   return (
     <main className={styles.main}>
       <h1>Deploy Next js project on vercel</h1>
