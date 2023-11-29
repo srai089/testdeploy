@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
-import { User, User } from "@/lib/model/user";
+import { User } from "@/lib/model/user";
 
 export async function GET (){
  await mongoose.connect(process.env.DBCONNECT);
@@ -11,9 +11,14 @@ export async function GET (){
 
 export async function POST(req, content){
     const userData= await req.json();
-    const user= new User(
-        userData
-    );
-const resp= await user.save();
-return NextResponse.json({result:resp, success:true})
+    try {
+        const user= new User(
+            userData
+        );
+    const resp= await user.save();
+    return NextResponse.json({result:resp, success:true})
+    } catch (error) {
+        console.log(error)
+    }
+
 }
