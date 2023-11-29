@@ -9,16 +9,12 @@ export async function GET (){
    return NextResponse.json({result:resp, success:true})
 };
 
-export async function POST(req, content){
-    const userData= await req.json();
-    try {
-        const user= new User(
-            userData
-        );
-    const resp= await user.save();
-    return NextResponse.json({result:resp, success:true})
-    } catch (error) {
-        console.log(error)
-    }
-
-}
+// export async function POST(req, content){
+//     const userData= await req.json();
+  
+//         const user= new User(
+//             userData
+//         );
+//     const resp= await user.save();
+//     return NextResponse.json({result:resp, success:true})
+// }
