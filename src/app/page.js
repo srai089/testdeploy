@@ -1,7 +1,13 @@
 import Image from 'next/image'
 import styles from './page.module.css';
-
-export default function Home() {
+const fetchUser= async ()=>{
+  let resp= await fetch (`${process.env.HOST}/helloapi`, {cache:"no-cache"});
+  resp = resp.json();
+  return resp;
+}
+export default async function Home() {
+  const users= await fetchUser()
+  console.log(users);
   return (
     <main className={styles.main}>
       <h1>Deploy Next js project on vercel</h1>
